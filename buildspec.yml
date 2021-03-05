@@ -4,15 +4,15 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ${{secrets.AWS_DEFAULT_REGION}} | docker login --username AWS --password-stdin ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{secrets.AWS_DEFAULT_REGION}}.amazonaws.com
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 779022664097.dkr.ecr.us-west-2.amazonaws.com
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t ${{secrets.IMAGE_REPO_NAME}}:${{secrets.IMAGE_TAG}} .
-      - docker tag ${{secrets.IMAGE_REPO_NAME}}:${{secrets.IMAGE_TAG}} ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{secrets.AWS_DEFAULT_REGION}}.amazonaws.com/${{secrets.IMAGE_REPO_NAME}}:${{secrets.IMAGE_TAG}}      
+      - docker build -t mydockerrepo .
+      - docker tag mydockerrepo:latest 779022664097.dkr.ecr.us-west-2.amazonaws.com/mydockerrepo:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{secrets.AWS_DEFAULT_REGION}}.amazonaws.com/${{secrets.IMAGE_REPO_NAME}}:${{secrets.IMAGE_TAG}}
+      - docker push 779022664097.dkr.ecr.us-west-2.amazonaws.com/mydockerrepo:latest
