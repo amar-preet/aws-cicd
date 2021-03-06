@@ -30,4 +30,10 @@ jobs:
         uses: aws-actions/aws-codebuild-run-build@v1.0.3
         with:
           project-name: AWS-CODEBUILD_DEMO-CICD
-      
+
+      - name: Deploy Website
+        uses: crazy-max/ghaction-github-pages@v2.2.0
+        with:
+          # GitHub repository where assets will be deployed (default current)
+          repo: master
+            
