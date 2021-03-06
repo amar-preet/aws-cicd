@@ -36,4 +36,7 @@ jobs:
         with:
           # GitHub repository where assets will be deployed (default current)
           repo: master
+          build_dir: public 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
             
