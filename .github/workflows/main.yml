@@ -34,8 +34,6 @@ jobs:
       - name: Deploy Website
         uses: crazy-max/ghaction-github-pages@v2.2.0
         with:
-          # GitHub repository where assets will be deployed (default current)
-          repo: master
           build_dir: public 
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}  
